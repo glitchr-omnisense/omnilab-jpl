@@ -1,0 +1,1 @@
+{"signature":{"version":"1.0","source":"NASA/JPL SBDB (Small-Body DataBase) Query API"},"fields":["spkid","full_name","pdes","name","prefix","kind","neo","pha","class","H","diameter","albedo","rot_per","e","a","q","i","per","moid"],"data":[],"count":0}

@@ -1,0 +1,47 @@
+{
+    "name": "omnilab/jpl",
+    "type": "library",
+    "description": "Omnilab JPL: an asteroid or a comet by its number, designation or name, from NASA/JPL's Small-Body Database API - its orbit (elements at their epoch with their uncertainties, period, MOID), physical parameters (absolute magnitude, diameter, albedo, rotation period, density, spectral types), NEO and PHA flags, discovery and IAU citation, close approaches to the Earth and Sentry's impact risk - and a search by name or designation (SBDB Query API), no key needed.",
+    "keywords": [
+        "science",
+        "astronomy",
+        "jpl",
+        "nasa",
+        "asteroids",
+        "comets",
+        "small-bodies",
+        "sbdb",
+        "omnilab"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Meyer",
+            "email": "marco.meyer@glitchr.io"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "glitchr/omnilab": "^1.0@dev",
+        "symfony/http-client": "^6.4|^7.0|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omnilab\\Jpl\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omnilab\\Jpl\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
