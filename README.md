@@ -1,6 +1,6 @@
 # omnilab/jpl
 
-NASA/JPL's Small-Body Database for [glitchr/omnilab](https://github.com/glitchr-studio/omnilab):
+NASA/JPL's Small-Body Database for [omniscient/omnilab](https://github.com/glitchr-studio/omnilab):
 an asteroid or a comet by its number, its designation or its name (`433`, `Eros`, `2004 MN4`,
 `1P`, `C/2020 F3`); its orbit - the osculating elements at their epoch with their uncertainties,
 the period, the MOIDs -, its physical parameters (absolute magnitude, diameter, albedo, rotation
