@@ -1,5 +1,10 @@
 # omnilab/jpl
 
+NASA/JPL's Small-Body Database, through the SSD/CNEOS API service (`https://ssd-api.jpl.nasa.gov/`:
+`sbdb.api`, `sbdb_query.api`), for [omnisense/omnilab](https://github.com/glitchr-omnisense/omnilab):
+asteroids and comets by number, designation, name or SPK-ID - orbit, physical parameters, NEO and
+PHA flags, close approaches to the Earth, Sentry's impact risk - as entities; a search. No key.
+
 ## Installation
 
 ```sh
@@ -18,6 +23,47 @@ $jpl = (new JplSourceFactory($httpClient))->create([
 
 With the Symfony bundle, the factory is registered as `jpl` when the bundle knows it; otherwise
 register `JplSourceFactory` as a service (it is autoconfigured as a `SourceFactoryInterface`).
+
+## Credentials
+
+None: the SSD/CNEOS API service takes no key. JPL's fair use policy asks for an
+application-specific User-Agent with a contact (give `mailto`), one request at a time, results
+cached; it does not let a web page call it from the browser (CORS): call it from the server.
+
+## Options
+
+The factory's options, with the defaults it applies (`JplSourceFactory`):
+
+| Option | Type | Default | Required | Effect |
+|---|---|---|---|---|
+| `synonyms` | `int` | `20` | no | how many alternate designations to keep; 0: none |
+| `now` | `?string` | null | no | the moment the next close approach is reckoned from (a `DateTimeImmutable` or a date string, UTC), for tests; null: now |
+| `mailto` | `?string` | null | no | a contact address, in the User-Agent: JPL's fair use asks an application-specific one |
+| `user_agent` | `?string` | null | no | the whole User-Agent, in place of the one made from `mailto` |
+| `throttle` | `float` | `0.2` | no | seconds left between two calls: JPL asks one request at a time |
+| `base_uri` | `string` | `https://ssd-api.jpl.nasa.gov/` | no | the API the source calls |
+
+## Capabilities
+
+`capabilities()` answers `entity`, `search`; an operation it does not answer throws `NotSupportedException` before any call.
+
+| Capability | Supported | |
+|---|---|---|
+| `entity` | yes | a number (`433`), a designation (`2004 MN4`, `1P`, `C/2020 F3`), a name, an SPK-ID, `jpl.sbdb:`, an SBDB Lookup page: one call with every section; a name two bodies share is null; another scheme refused before any call |
+| `search` | yes | the names that hold the text, whatever its case, or the designation that is it, 100 a page at most, paged by offset, with a `total`; a domain other than astronomy answers an empty page |
+| `series` | no | close approaches and Sentry are not series (no place on the Earth): read into the body's properties |
+| `products` | no |  |
+| `occurrences` | no |  |
+| `datasets` | no |  |
+| `jobs` | no |  |
+| `open` | no |  |
+| `structure` | no |  |
+| `cross_references` | no | its SPK-ID as a second `jpl.sbdb` identifier; the MPC names the body by the same designation |
+| `forecast` | no |  |
+| `historical` | no |  |
+| `area` | no |  |
+| `station` | no |  |
+| `cloud_cover` | no |  |
 
 ## Which API
 
@@ -122,6 +168,55 @@ impactor's date and energy, the planets and moons (not small bodies), the Horizo
 and the other SSD/CNEOS APIs (Scout, NHATS, fireballs, `cad.api` and `sentry.api` as lists: see
 above) are not read.
 
+## Example
+
+```php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use Omnilab\Jpl\JplSourceFactory;
+use Omnilab\Source\Query;
+use Symfony\Component\HttpClient\HttpClient;
+
+$jpl = (new JplSourceFactory(HttpClient::create()))->create(['mailto' => 'you@example.org', 'synonyms' => 3]);
+
+$bennu = $jpl->entity('Bennu');
+echo $bennu->label, ' (', $bennu->id, '): NEO ', $bennu->property('neo'), ', PHA ', $bennu->property('pha'), ', diameter ', $bennu->property('diameter'), "\n";
+echo '  closest Earth approach ', $bennu->value('closest_earth_approach'), ' at ', $bennu->property('closest_earth_approach_distance'), "\n";
+echo '  Sentry: ', $bennu->value('sentry_impacts'), ' virtual impactors, probability ', $bennu->value('sentry_impact_probability'), ', Palermo max ', $bennu->value('sentry_palermo_max'), "\n";
+var_dump($jpl->entity('Halley'));   // two bodies: neither
+
+$page = $jpl->search(new Query('eros', limit: 3));
+printf("%d bodies hold \"eros\"; the first %d: %s\n", $page->total, count($page), implode(', ', array_map(static fn ($b) => $b->label, $page->items)));
+```
+
+```
+101955 Bennu (jpl.sbdb:101955): NEO yes, PHA yes, diameter 0.48444 ± 0.0003 km
+  closest Earth approach 2135-Sep-25 07:49 at 0.0013639272 au
+  Sentry: 157 virtual impactors, probability 0.0005717, Palermo max -1.58
+NULL
+13 bodies hold "eros"; the first 3: 433 Eros, 947 Monterosa, 1943 Anteros
+```
+
+(as answered on 2026-10-27: three calls, 0.2 s apart; "Halley" names two bodies, the SBDB's code
+300: null)
+
+```yaml
+# config/packages/omnilab.yaml
+omnilab:
+    sources:
+        jpl: { factory: jpl, options: { mailto: '%env(OMNILAB_MAILTO)%', synonyms: 20 } }
+```
+
+## Errors
+
+Every call goes through `HttpSource`: a 404 or a 410 (and a 204) is null - an empty page for a list -; a 429 is a `RateLimitedException` (`retryAfter` from `Retry-After`); a 5xx, a time-out or a host that does not answer an `UnavailableException`; any other 4xx a `ProviderException` with its `status` and what the service said; an answer that is not JSON a `ProviderException`, a web page answered for JSON an `UnavailableException`.
+
+The SBDB's own: "specified object was not found" (code 200) and several matches (code 300, a list)
+are null; any other code with a message a `ProviderException` with it. Before any call: an
+identifier of another scheme (`NotSupportedException`).
+
 ## Verified, and not
 
 Against the real service on 2026-10-15: 433 Eros by its number, its name and its SPK-ID; 101955
@@ -131,5 +226,19 @@ C/2020 F3 (NEOWISE), comets; "Halley" (code 300, two bodies); an unknown name; t
 "eros" (13 bodies, offsets 0 and 3) and an unknown text; `cad.api` (to decide against a series);
 the Collector's walk above. The fixtures in `Tests/Fixtures/` are its answers.
 
+Again on 2026-10-27: Bennu (its closest Earth approach in 2135, Sentry's 157 virtual impactors),
+"Halley" null, the search for "eros" (13 bodies; the example above).
+
 Not verified: JPL's answer to a client that calls too fast (no 429 met; the source calls one at a
 time, 0.2 s apart); a body asked by a planet's satellite designation.
+
+## Responsibility
+
+This package is an independent, unofficial client: it is not affiliated with, endorsed by or
+sponsored by NASA, JPL or Caltech. The SSD/CNEOS API service is free under JPL's
+[fair use policy](https://ssd-api.jpl.nasa.gov/): only the requests a use needs, one at a time,
+results cached, an application-specific User-Agent with a contact, as the README's
+[Terms of use](https://github.com/glitchr-omnisense/omnilab-jpl#terms-of-use) says. Whoever runs
+the package is responsible for complying with them and for any use made of what it returns: see
+the README's [Responsibility](https://github.com/glitchr-omnisense/omnilab-jpl#responsibility)
+section.
