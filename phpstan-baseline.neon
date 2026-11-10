@@ -1,0 +1,427 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 4
+			path: JplSource.php
+
+		-
+			message: '#^Binary operation "\." between ''code '' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''citation'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''code'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''condition_code'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''data_arc'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''date'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''des'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''des_alt'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''elements'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''epoch'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''epoch_cd'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''first_obs'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''fullname'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''kind'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''last_obs'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''location'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''moid'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''moid_jup'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''n_obs_used'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''neo'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''orbit_class'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''pha'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''prefix'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''shortname'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''sigma'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''spkid'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''t_jup'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''title'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''units'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''value'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 4
+			path: JplSource.php
+
+		-
+			message: '#^Cannot access offset ''who'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 9
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#1 \$approaches of method Omnilab\\Jpl\\JplSource\:\:approaches\(\) expects list\<array\<string, mixed\>\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#1 \$data of method Omnilab\\Jpl\\JplSource\:\:fromRecord\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#1 \$impactors of static method Omnilab\\Jpl\\JplSource\:\:sentry\(\) expects list\<array\<string, mixed\>\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#1 \$keys of function array_combine expects array\<int\|string\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#1 \$row of method Omnilab\\Jpl\\JplSource\:\:fromRow\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#1 \$text of static method Omnilab\\Source\\HttpSource\:\:text\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 17
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#1 \$value of function count expects array\|Countable, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#2 \$unit of static method Omnilab\\Jpl\\JplSource\:\:measure\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#2 \$values of function array_combine expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#3 \$value of class Omnilab\\Model\\Property constructor expects bool\|float\|int\|Omnilab\\Model\\Quantity\|string, float\|int\|Omnilab\\Model\\Quantity\|null given\.$#'
+			identifier: argument.type
+			count: 2
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#3 \$value of class Omnilab\\Model\\Property constructor expects bool\|float\|int\|Omnilab\\Model\\Quantity\|string, float\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Parameter \#3 \$value of class Omnilab\\Model\\Property constructor expects bool\|float\|int\|Omnilab\\Model\\Quantity\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: JplSource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>value" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: JplSource.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 1
+			path: JplSourceFactory.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: JplSourceFactory.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: JplSourceFactory.php
+
+		-
+			message: '#^Binary operation "\." between ''query\-eros\-'' and 0\|array\<mixed\>\|string results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''\.json'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot access property \$description on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot access property \$domain on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot access property \$id on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot access property \$kind on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot access property \$label on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot access property \$synonyms on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: property.nonObject
+			count: 4
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot access property \$url on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot call method identifiers\(\) on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot call method number\(\) on Omnilab\\Model\\Property\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot call method property\(\) on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: method.nonObject
+			count: 10
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot call method unit\(\) on Omnilab\\Model\\Property\|null\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Cannot call method value\(\) on Omnilab\\Model\\Entity\|null\.$#'
+			identifier: method.nonObject
+			count: 34
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Method Omnilab\\Jpl\\Tests\\JplSourceTest\:\:source\(\) has parameter \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_contains expects string, array\<mixed\>\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Parameter \#1 \$options of method Omnilab\\Source\\SourceFactory\:\:create\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Parameter \#2 \$string of static method PHPUnit\\Framework\\Assert\:\:assertStringStartsWith\(\) expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: Tests/JplSourceTest.php
+
+		-
+			message: '#^Property Omnilab\\Jpl\\Tests\\JplSourceTest\:\:\$calls \(list\<array\<string, string\>\>\) does not accept non\-empty\-list\<array\<int\|string, array\<mixed\>\|string\>\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: Tests/JplSourceTest.php
