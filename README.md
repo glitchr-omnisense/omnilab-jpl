@@ -34,6 +34,34 @@ omnilab:
 With Wikidata configured too, the `Collector` follows a small body from one to the other:
 Wikidata's JPL Small-Body Database id (P716, the SPK-ID: 20000433 for Eros) leads to the SBDB.
 
+## Install and a first call
+
+```sh
+composer require omnilab/jpl
+```
+
+A real call, with no account and no key: the asteroid Bennu in JPL's Small-Body Database. `mailto`
+is your address, sent in the User-Agent so that the service can reach you before it blocks a caller;
+the source keeps to the limits its [`policy.json`](policy.json) declares.
+
+```php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use Omnilab\Jpl\JplSourceFactory;
+
+$jpl = (new JplSourceFactory())->create(['mailto' => 'you@example.org']);   // your address, in the User-Agent
+$bennu = $jpl->entity('Bennu');
+echo $bennu->id, ' ', $bennu->label, ', diameter ', $bennu->property('diameter'), "\n";
+```
+
+Its output on 2026-11-13:
+
+```
+jpl.sbdb:101955 101955 Bennu, diameter 0.48444 ± 0.0003 km
+```
+
 ## Terms of use
 
 The SSD/CNEOS API service is JPL's, free and without a key, under its
